@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Menu from "./MenuComponent";
 import Dishdetail from "./DishdetailComponent";
+import Contact from './ContactComponent';
+import About from './AboutComponent';
 import { DISHES } from "../shared/dishes";
 import { View, Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -59,11 +61,59 @@ function HomeNavigator() {
   );
 }
 
+function ContactNavigator() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Contact"
+      screenOptions={({ navigation }) => ({
+      headerStyle: {
+          backgroundColor: "#512DA8"
+      },
+      headerTitleStyle: {
+          color: "#fff"            
+      },
+      headerTintColor: "#fff"  
+    })}
+    >
+      <Stack.Screen
+        name="Contact"
+        component={Contact}
+        initialParams={{ title: "Contact Us" }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function AboutNavigator() {
+  return (
+    <Stack.Navigator
+      initialRouteName="About"
+      screenOptions={({ navigation }) => ({
+      headerStyle: {
+          backgroundColor: "#512DA8"
+      },
+      headerTitleStyle: {
+          color: "#fff"            
+      },
+      headerTintColor: "#fff"  
+    })}
+    >
+      <Stack.Screen
+        name="About"
+        component={About}
+        initialParams={{ title: "About Us" }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function MainNavigator() {
   return (
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeNavigator} />
       <Drawer.Screen name="Menu" component={MenuNavigator} />
+      <Drawer.Screen name="Contact Us" component={ContactNavigator} />
+      <Drawer.Screen name="About Us" component={AboutNavigator} />
     </Drawer.Navigator>
   );
 }
